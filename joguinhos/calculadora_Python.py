@@ -1,54 +1,77 @@
-from random import randint as rdt
-from time import sleep as sp
+from time import sleep as slp
 
-itens = ('Pedra', 'Papel', 'Tesoura')
-computador = rdt(0, 2)
+print('      \033[1m-_-_-_-_-_-_-\033[m')
+print('       \033[1;4mCALCULADORA\033[m')
+print('      \033[1m-_-_-_-_-_-_-\033[m')
 
-print('''\033[37;1mJogadas:
-[ 0 ] PEDRA
-[ 1 ] PAPEL
-[ 2 ] TESOURA''')
+n1 = int(input('Digite um valor: '))
+n2 = int(input('Digite outro valor: '))
 
-player = int(input('Escolha sua jogada: '))
+print()
 
-print('\033[31;1mJO')
-sp(1)
-print('KEN')
-sp(1)
-print('PÔ\033[m')
+escolha = int(input('''O que você deseja fazer com esses valores?
+    [ 1 ] Somar
+    [ 2 ] Multiplicar
+    [ 3 ] Maior
+    [ 4 ] Novos números
+    [ 5 ] Sair do programa
+    Escolha: '''))
 
-print('\033[31;1m* \033[m' * 10)
-print('O computador escolheu \033[1m%s\033[m!' % itens[computador])
-print('Você jogou \033[1m%s\033[m!' % itens[player])
-print('\033[31;1m* \033[m' * 10)
+while escolha != 5:
+    if escolha < 1:
+        print('\033[1;4;31m-_' * 18)
+        print('ERRO\nEscolha uma opção de 1 a 5!')
+        print('-_' * 18)
 
+    elif escolha > 5:
+        print('\033[1;4;31m-_' * 18)
+        print('ERRO\nEscolha uma opção de 1 a 5!')
+        print('-_' * 18)
 
-if computador == 0:  #PEDRA
-    if player == 0:
-        print('EMPATE!')
-    elif player == 1:
-        print('VOCÊ GANHOU DO COMPUTADOR!!! PARABÉNS!!!')
-    elif player == 2:
-        print('VOCÊ PERDEU...')
-    else:
-        print('\033[31;4mJOGADA INVÁLIDA, TENTE NOVAMENTE\033[m')
+    elif escolha == 1:
+        print('-_' * 18)
+        print('A soma entre %i e %i é igual a %i' % (n1, n2, n1 + n2))
+        print('-_' * 18)
+        slp(4)
 
-elif computador == 1:   #PAPEL
-    if player == 0:
-        print('VOCÊ PERDEU...')
-    elif player == 1:
-        print('EMPATE!')
-    elif player == 2:
-        print('VOCÊ GANHOU DO COMPUTADOR!!! PARABÉNS!!!')
-    else:
-        print('\033[31;4mJOGADA INVÁLIDA, TENTE NOVAMENTE\033[m')
+    elif escolha == 2:
+        print('-_' * 18)
+        print('A multiplicação entre %i e %i é igual a %i' % (n1, n2, n1 * n2))
+        print('-_' * 18)
+        slp(4)
 
-elif computador == 2:   #TESOURA
-    if player == 0:
-        print('VOCE GANHOU DO COMPUTADOR!!! PARABÉNS!')
-    elif player == 1:
-        print('VOCÊ PERDEU...')
-    elif player == 2:
-        print('EMPATE!')
-    else:
-        print('\033[31;4mJOGADA INVÁLIDA, TENTE NOVAMENTE\033[m')
+    elif escolha == 3:
+        if n1 > n2:
+            print('-_' * 18)
+            print('O maior número entre %i e %i é o \033[1m%i\033[m' % (n1, n2, n1))
+            print('-_' * 18)
+        elif n2 > n1:
+            print('-_' * 18)
+            print('O maior número entre %i e %i é o \033[1m%i\033[m' % (n1, n2, n2))
+            print('-_' * 18)
+        else:
+            print('-_' * 18)
+            print('Os números %i e %i são iguais' % (n1, n2))
+            print('-_' * 18)
+        slp(4)
+
+    elif escolha == 4:
+        print('-_' * 18)
+        print('Opa, vamos lá novamente!')
+        n1 = int(input('Digite um valor: '))
+        n2 = int(input('Digite outro valor: '))
+        print('-_' * 18)
+        print('O que você deseja fazer com esses novos valores?')
+
+    escolha = int(input('''\033[m
+     [ 1 ] Somar
+     [ 2 ] Multiplicar
+     [ 3 ] Maior
+     [ 4 ] Novos números
+     [ 5 ] Sair do programa
+     Escolha: '''))
+
+print('Saindo...')
+slp(2)
+print('-_' * 18)
+print('Tenha uma boa noite!...zzz...')
